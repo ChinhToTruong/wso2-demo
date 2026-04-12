@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api name="UserAPI" context="/users" xmlns="http://ws.apache.org/ns/synapse">
+  <resource methods="GET" uri-template="/">
+
+    <inSequence>
+      <sequence key="UserSequence"/>
+    </inSequence>
+
+  </resource>
+</api>

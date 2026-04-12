@@ -1,0 +1,46 @@
+<data name="UserService"
+      transports="http https"
+      xmlns="http://ws.wso2.org/dataservice">
+
+     <config id="MyDS">
+        <property name="driverClassName">com.mysql.cj.jdbc.Driver</property>
+        <property name="url">jdbc:mysql://host.docker.internal:3306/testdb?useSSL=false&amp;allowPublicKeyRetrieval=true</property>
+        <property name="username">root</property>
+        <property name="password">123456</property>
+     </config>
+
+   <!-- QUERY: GET ALL USERS -->
+   <query id="getAllUsers" useConfig="MyDS">
+      <sql>SELECT id, name FROM users</sql>
+
+      <result element="users" rowName="user">
+         <element name="id" column="id"/>
+         <element name="name" column="name"/>
+      </result>
+   </query>
+
+   <!-- QUERY: GET USER BY ID -->
+   <query id="getUserById" useConfig="MyDS">
+      <sql>SELECT id, name FROM users WHERE id = :id</sql>
+
+      <result element="user" rowName="user">
+         <element name="id" column="id"/>
+         <element name="name" column="name"/>
+      </result>
+
+      <param name="id" sqlType="INTEGER"/>
+   </query>
+
+   <!-- RESOURCE: GET ALL USERS -->
+   <resource method="GET" path="users">
+      <call-query href="getAllUsers"/>
+   </resource>
+
+   <!-- RESOURCE: GET USER BY ID -->
+   <resource method="GET" path="user/{id}">
+      <call-query href="getUserById">
+         <with-param name="id" query-param="id"/>
+      </call-query>
+   </resource>
+
+</data>
