@@ -1,0 +1,19 @@
+<sequence name="create-user-db" xmlns="http://ws.apache.org/ns/synapse">
+
+  <dbreport>
+    <connection>
+      <pool>
+        <driver>com.mysql.cj.jdbc.Driver</driver>
+        <url>jdbc:mysql://host.docker.internal:3306/testdb</url>
+        <user>root</user>
+        <password>123456</password>
+      </pool>
+    </connection>
+
+    <statement>
+      <sql>INSERT INTO users(name) VALUES (?)</sql>
+      <parameter expression="get-property('name')" type="VARCHAR"/>
+    </statement>
+  </dbreport>
+
+</sequence>

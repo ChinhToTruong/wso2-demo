@@ -1,0 +1,11 @@
+<sequence name="update-user-response" xmlns="http://ws.apache.org/ns/synapse">
+
+  <payloadFactory media-type="json">
+    <format>
+      {
+      "message": "User updated"
+      }
+    </format>
+  </payloadFactory>
+
+</sequence>

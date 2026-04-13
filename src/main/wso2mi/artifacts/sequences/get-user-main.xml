@@ -1,0 +1,39 @@
+<sequence name="get-user-main" xmlns="http://ws.apache.org/ns/synapse">
+
+  <!-- Lấy id từ path -->
+  <property name="userId" expression="get-property('uri.var.id')"/>
+
+  <!-- Log để debug -->
+  <log level="custom">
+    <property name="DEBUG_userId" expression="get-property('userId')"/>
+  </log>
+
+  <!-- Call DB -->
+  <sequence key="get-user-db"/>
+
+  <!-- Check nếu không có data -->
+  <filter source="get-property('id')" regex="^$">
+    <then>
+      <payloadFactory media-type="json">
+        <format>
+          {
+          "code": 404,
+          "message": "User not found"
+          }
+        </format>
+      </payloadFactory>
+      <property name="HTTP_SC" value="404" scope="axis2"/>
+      <respond/>
+    </then>
+  </filter>
+
+  <!-- Transform response -->
+  <sequence key="get-user-response"/>
+
+  <!-- Set status OK -->
+  <property name="HTTP_SC" value="200" scope="axis2"/>
+
+  <respond/>
+
+</sequence>
+

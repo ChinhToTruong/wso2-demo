@@ -1,0 +1,10 @@
+<sequence name="create-user-main" xmlns="http://ws.apache.org/ns/synapse">
+
+  <property name="name" expression="json-eval($.name)"/>
+
+  <sequence key="create-user-db"/>
+  <sequence key="create-user-response"/>
+
+  <respond/>
+
+</sequence>

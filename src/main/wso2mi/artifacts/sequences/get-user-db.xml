@@ -1,0 +1,23 @@
+<sequence name="get-user-db" xmlns="http://ws.apache.org/ns/synapse">
+
+  <dblookup>
+    <connection>
+      <pool>
+        <driver>com.mysql.cj.jdbc.Driver</driver>
+        <url>jdbc:mysql://host.docker.internal:3306/testdb?useSSL=false&amp;allowPublicKeyRetrieval=true</url>
+        <user>root</user>
+        <password>123456</password>
+      </pool>
+    </connection>
+
+    <statement>
+      <sql>SELECT id, name FROM users WHERE id = ?</sql>
+
+      <parameter expression="get-property('userId')" type="INTEGER"/>
+
+      <result name="id" column="id"/>
+      <result name="name" column="name"/>
+    </statement>
+  </dblookup>
+
+</sequence>

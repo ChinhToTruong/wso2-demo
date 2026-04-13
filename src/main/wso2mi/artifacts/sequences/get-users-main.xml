@@ -1,0 +1,18 @@
+<sequence name="get-users-main" xmlns="http://ws.apache.org/ns/synapse">
+  <!-- LOG trước khi call DSS -->
+  <log level="full">
+    <property name="STEP" value="BEFORE CALL DSS"/>
+  </log>
+  <call>
+    <endpoint>
+      <http method="get"
+        uri-template="http://localhost:8290/services/UserService/users"/>
+    </endpoint>
+  </call>
+  <!-- LOG sau khi call DSS -->
+  <log level="full">
+    <property name="STEP" value="AFTER CALL DSS"/>
+  </log>
+  <respond/>
+
+</sequence>

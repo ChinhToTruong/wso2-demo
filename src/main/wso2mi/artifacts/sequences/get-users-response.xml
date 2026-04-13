@@ -1,0 +1,11 @@
+<sequence name="get-users-response" xmlns="http://ws.apache.org/ns/synapse">
+
+  <payloadFactory media-type="json">
+    <format>
+      {
+      "message": "List API cần iterate để build JSON chuẩn"
+      }
+    </format>
+  </payloadFactory>
+
+</sequence>

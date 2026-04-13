@@ -87,7 +87,7 @@ url = "jdbc:mysql://host.docker.internal:3306/testdb?useSSL=false"
 username = "root"
 password = "123456"
 driver = "com.mysql.cj.jdbc.Driver"
-jndi_name = "jdbc/MyDS"
+#jndi_name = "jdbc/MyDS"
 
 # [management_api]
 # protocols = "http"

@@ -1,0 +1,10 @@
+<sequence name="delete-user-main" xmlns="http://ws.apache.org/ns/synapse">
+
+  <property name="id" expression="get-property('uri.var.id')"/>
+
+  <sequence key="delete-user-db"/>
+  <sequence key="delete-user-response"/>
+
+  <respond/>
+
+</sequence>

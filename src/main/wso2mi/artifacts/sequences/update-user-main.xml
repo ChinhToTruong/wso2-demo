@@ -1,0 +1,11 @@
+<sequence name="update-user-main" xmlns="http://ws.apache.org/ns/synapse">
+
+  <property name="id" expression="get-property('uri.var.id')"/>
+  <property name="name" expression="json-eval($.name)"/>
+
+  <sequence key="update-user-db"/>
+  <sequence key="update-user-response"/>
+
+  <respond/>
+
+</sequence>

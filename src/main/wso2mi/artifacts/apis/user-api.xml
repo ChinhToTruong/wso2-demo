@@ -1,0 +1,30 @@
+<api xmlns="http://ws.apache.org/ns/synapse" name="UserAPI" context="/users">
+  <resource methods="GET" uri-template="/{id}">
+    <inSequence>
+      <sequence key="get-user-main"/>
+    </inSequence>
+  </resource>
+  <resource methods="GET" uri-template="/">
+    <inSequence>
+      <sequence key="get-users-main"/>
+    </inSequence>
+  </resource>
+
+  <resource methods="POST" uri-template="/">
+    <inSequence>
+      <sequence key="create-user-main"/>
+    </inSequence>
+  </resource>
+
+  <resource methods="PUT" uri-template="/{id}">
+    <inSequence>
+      <sequence key="update-user-main"/>
+    </inSequence>
+  </resource>
+
+  <resource methods="DELETE" uri-template="/{id}">
+    <inSequence>
+      <sequence key="delete-user-main"/>
+    </inSequence>
+  </resource>
+</api>

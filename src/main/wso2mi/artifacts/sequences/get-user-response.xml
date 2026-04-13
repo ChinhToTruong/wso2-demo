@@ -1,0 +1,16 @@
+<sequence name="get-user-response" xmlns="http://ws.apache.org/ns/synapse">
+
+  <payloadFactory media-type="json">
+    <format>
+      {
+      "id": "$1",
+      "name": "$2"
+      }
+    </format>
+    <args>
+      <arg expression="get-property('id')"/>
+      <arg expression="get-property('name')"/>
+    </args>
+  </payloadFactory>
+
+</sequence>

@@ -1,0 +1,11 @@
+<sequence name="create-user-response" xmlns="http://ws.apache.org/ns/synapse">
+
+  <payloadFactory media-type="json">
+    <format>
+      {
+      "message": "User created"
+      }
+    </format>
+  </payloadFactory>
+
+</sequence>
